@@ -67,12 +67,12 @@ def register():
         if request.form['account_type'] == 'admin':
             # redirect to admin registration page
             return redirect(url_for('register_admin'))
-        elif request.form['account_type'] == 'care provider':
-            # redirect to care provider registration page
-            return redirect(url_for('register_provider')) 
         elif request.form['account_type'] == 'patient':
             # redirect to patient registration page
             return redirect(url_for('register_patient'))
+        elif request.form['account_type'] == 'Provider':
+            # redirect to patient registration page
+            return redirect(url_for('register_provider'))
     elif request.method == 'POST':
         # Form is empty... (no POST data)
         msg = 'Please fill out the form!'
@@ -167,7 +167,6 @@ def register_patient():
         dob = request.form['dob']
         gender = request.form['gender']
         contact_mobile = request.form['contact_mobile']
-        contact_home = request.form['contact_home']
 
         ## Fields to capture patient conditions
         pt_conditions = request.form.getlist('conditions')
@@ -183,7 +182,7 @@ def register_patient():
             lastlogin = datetime.datetime.now()
             
             new_user = Users(username, password, email, account_type, mrn, datecreated, lastlogin)
-            new_patient = Patients(mrn, first_name, last_name, zip_code, dob, gender, contact_mobile, contact_home)
+            new_patient = Patients(mrn, first_name, last_name, zip_code, dob, gender, contact_mobile)
 
             db.session.add(new_user)
             db.session.commit()
