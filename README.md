@@ -1,4 +1,8 @@
-# pssp_enhancements
+# Pssp_enhancements
+
+### HAN 504 | Assignment 9
+
+## Description
 
 In this repo, we used our previously built patient database and made it into a fake patient portal. 
 
